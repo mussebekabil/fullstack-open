@@ -1,0 +1,19 @@
+note over browser:
+user started creating a new note 
+and click submit button  
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: StatusCode: 302
+
+note over browser:
+redirect url where the server asks the 
+browser to make new HTTP GET request
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
