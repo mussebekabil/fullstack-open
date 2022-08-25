@@ -24,7 +24,7 @@ const App = () => {
   useEffect(() => {
     getAll().then(blogs =>
       setBlogs( blogs )
-    )  
+    )
   }, [])
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const App = () => {
   }, [])
 
   const prepareNotification = (message, className) => {
-    setNotification ({ message, className})
+    setNotification ({ message, className })
     setTimeout(() => {
       setNotification(null)
     }, 5000)
@@ -49,7 +49,7 @@ const App = () => {
         ...blog,
         likes: blog.likes + 1
       })
-      
+
       setBlogs(blogs.map(b => b.id !== updatedBlog.id ? b : updatedBlog))
     } catch (e) {
       const message = e.response.data.error || e.toString()
@@ -80,7 +80,7 @@ const App = () => {
       blogFormRef.current.toggleVisibility()
       setBlogs([...blogs, createdBlog])
       prepareNotification(
-        `a new blog ${createdBlog.title} by ${createdBlog.author} added`, 
+        `a new blog ${createdBlog.title} by ${createdBlog.author} added`,
         'success'
       )
     } catch (e) {
@@ -95,7 +95,7 @@ const App = () => {
         await deleteBlog(blog.id)
         setBlogs(blogs.filter(b => b.id !== blog.id))
         prepareNotification(
-          `Deleted blog ${blog.title} by ${blog.author} added`, 
+          `Deleted blog ${blog.title} by ${blog.author} added`,
           'success'
         )
       } catch (e) {
@@ -116,7 +116,7 @@ const App = () => {
       <form onSubmit={handleLogin}>
         <div>
           username
-            <input
+          <input
             type="text"
             value={username}
             name="Username"
@@ -125,7 +125,7 @@ const App = () => {
         </div>
         <div>
           password
-            <input
+          <input
             type="password"
             value={password}
             name="Password"
@@ -140,25 +140,25 @@ const App = () => {
   const renderBlogs = () => (
     <div>
       <h2>blogs</h2>
-      
+
       <p>{user.name} logged in <button onClick={handleLogout}>logout</button></p>
-      
+
       <Togglable buttonLabel='create new note' ref={blogFormRef}>
-        <BlogForm 
-          blog={blog} 
-          setBlog={setBlog} 
-          handleCreate={handleCreateBlog} 
+        <BlogForm
+          blog={blog}
+          setBlog={setBlog}
+          handleCreate={handleCreateBlog}
         />
       </Togglable>
 
       {blogs
         .sort((a, b) => b.likes - a.likes)
         .map(blog =>
-        <Blog key={blog.id} blog={blog} user={user} handleLikes={handleLikes} handleDelete={handleDeleteBlog}/>
-      )}
+          <Blog key={blog.id} blog={blog} user={user} handleLikes={handleLikes} handleDelete={handleDeleteBlog}/>
+        )}
     </div>
   )
-  
+
   return (
     <div>
 
