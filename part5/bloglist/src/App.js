@@ -6,18 +6,11 @@ import Togglable from './components/Togglable'
 import { getAll, setToken, create, update, deleteBlog } from './services/blogs'
 import { login } from './services/login'
 
-const initialBlog = {
-  title: '',
-  author: '',
-  url: ''
-}
-
 const App = () => {
   const [blogs, setBlogs] = useState([])
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
-  const [blog, setBlog] = useState(initialBlog)
   const [notification, setNotification] = useState(null)
   const blogFormRef = useRef()
 
@@ -73,8 +66,7 @@ const App = () => {
     }
   }
 
-  const handleCreateBlog = async (e) => {
-    e.preventDefault()
+  const handleCreateBlog = async (blog) => {
     try {
       const createdBlog = await create(blog)
       blogFormRef.current.toggleVisibility()
@@ -145,8 +137,6 @@ const App = () => {
 
       <Togglable buttonLabel='create new note' ref={blogFormRef}>
         <BlogForm
-          blog={blog}
-          setBlog={setBlog}
           handleCreate={handleCreateBlog}
         />
       </Togglable>

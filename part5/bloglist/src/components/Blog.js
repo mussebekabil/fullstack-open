@@ -39,8 +39,8 @@ Blog.propTypes = {
     name: PropTypes.string,
     token: PropTypes.string
   }),
-  handleLikes: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired
+  handleLikes: PropTypes.func,
+  handleDelete: PropTypes.func
 }
 
 export default Blog
