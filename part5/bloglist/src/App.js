@@ -87,7 +87,7 @@ const App = () => {
         await deleteBlog(blog.id)
         setBlogs(blogs.filter(b => b.id !== blog.id))
         prepareNotification(
-          `Deleted blog ${blog.title} by ${blog.author} added`,
+          `Deleted blog ${blog.title} by ${blog.author}`,
           'success'
         )
       } catch (e) {
@@ -104,7 +104,7 @@ const App = () => {
 
   const renderLoginForm = () => (
     <div>
-      <h2>log in to application</h2>
+      <h2>login to application</h2>
       <form onSubmit={handleLogin}>
         <div>
           username
@@ -124,7 +124,7 @@ const App = () => {
             onChange={({ target }) => setPassword(target.value)}
           />
         </div>
-        <button type="submit">login</button>
+        <button id="login-btn" type="submit">login</button>
       </form>
     </div>
   )
@@ -135,7 +135,7 @@ const App = () => {
 
       <p>{user.name} logged in <button onClick={handleLogout}>logout</button></p>
 
-      <Togglable buttonLabel='create new note' ref={blogFormRef}>
+      <Togglable buttonLabel='create new blog' ref={blogFormRef}>
         <BlogForm
           handleCreate={handleCreateBlog}
         />

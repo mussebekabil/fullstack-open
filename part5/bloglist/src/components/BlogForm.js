@@ -28,6 +28,7 @@ const BlogForm = ({ handleCreate }) => {
             type="text"
             value={blog.title}
             aria-label="Title"
+            id="title"
             onChange={({ target }) => setBlog({ ...blog, title: target.value })}
           />
         </div>
@@ -37,6 +38,7 @@ const BlogForm = ({ handleCreate }) => {
             type="text"
             value={blog.author}
             aria-label="Author"
+            id="author"
             onChange={({ target }) => setBlog({ ...blog, author: target.value })}
           />
         </div>
@@ -46,10 +48,11 @@ const BlogForm = ({ handleCreate }) => {
             type="text"
             value={blog.url}
             aria-label="Url"
+            id="url"
             onChange={({ target }) => setBlog({ ...blog, url: target.value })}
           />
         </div>
-        <button type="submit">create</button>
+        <button id="create" type="submit">create</button>
       </form>
     </div>
 )}
