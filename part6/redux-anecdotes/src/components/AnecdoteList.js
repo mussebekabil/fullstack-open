@@ -17,10 +17,10 @@ const AnecdoteList = () => {
       dispatch(removeNotification(''))
     }, 5000)
   }
+  const sortedList = [...anecdotes].sort((a, b) => b.votes - a.votes)
   return (
     <div>
-      {anecdotes
-        .sort((a, b) => b.votes - a.votes)
+      {sortedList
         .map(anecdote =>
           <div key={anecdote.id}>
             <div>
