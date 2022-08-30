@@ -1,9 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  Routes,
-  Route
-} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
+import { Container } from '@mui/material'
 import Notification from './components/Notification'
 import LoginForm from './components/LoginForm'
 import BlogsList from './components/BlogsList'
@@ -27,8 +25,11 @@ const App = () => {
   )
 
   return (
-    <div>
+    <Container>
       <Header />
+
+      <h2>Blog App</h2>
+
       <Notification />
 
       {user === null ? <LoginForm /> : (
@@ -41,7 +42,7 @@ const App = () => {
         </Routes>
       )}
 
-    </div>
+    </Container>
   )
 }
 

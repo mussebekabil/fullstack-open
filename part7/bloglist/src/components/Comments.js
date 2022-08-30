@@ -1,6 +1,12 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useMatch } from 'react-router-dom'
+import {
+  Button,
+  TextField,
+  Typography,
+  Divider
+} from '@mui/material'
 import { setNotification } from '../reducers/notificationReducer'
 import { createBlogComment } from '../reducers/blogReducer'
 
@@ -21,22 +27,28 @@ const Comments = ({ comments }) => {
     }
   }
 
-  return (<div>
-    <h3>comments</h3>
+  return (
     <div>
-      <input
-        type="text"
-        value={comment}
-        aria-label="Comment"
-        id="comment"
-        onChange={({ target }) => setComment(target.value)}
-      />
-      <button id="add" onClick={addBlogComment}>add comment</button>
+      <Divider variant="middle"/>
+      <Typography component="h5" variant="h5">
+        Comments
+      </Typography>
+      <div>
+        <TextField
+          variant="filled"
+          fullWidth
+          value={comment}
+          aria-label="Comment"
+          id="comment"
+          onChange={({ target }) => setComment(target.value)}
+        />
+        <Button id="add" onClick={addBlogComment}>Add comment</Button>
+      </div>
+      <ul>
+        {comments.map((c, i) => (<li key={i}>{c}</li>))}
+      </ul>
     </div>
-    <ul>
-      {comments.map((c, i) => (<li key={i}>{c}</li>))}
-    </ul>
-  </div>)
+  )
 }
 
 export default Comments

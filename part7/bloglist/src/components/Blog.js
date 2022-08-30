@@ -1,5 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useMatch } from 'react-router-dom'
+import {
+  Button,
+  Card,
+  Typography,
+  CardContent
+} from '@mui/material'
 import { setNotification } from '../reducers/notificationReducer'
 import { deleteBlog, likeBlog } from '../reducers/blogReducer'
 import PropTypes from 'prop-types'
@@ -39,17 +45,19 @@ const Blog = () => {
 
   if(!blog) return null
   return (
-    <div>
-      <h2>{blog.title} {blog.author}</h2>
-      <div>
+    <Card>
+      <CardContent>
+        <Typography component="h5" variant="h5">
+          {blog.title} {blog.author}
+        </Typography>
         <p>{blog.url}</p>
-        <p>{blog.likes} likes <button id="like-btn" onClick={handleLikes}>like</button></p>
+        <p>{blog.likes} likes <Button id="like-btn" onClick={handleLikes}>like</Button></p>
         {blog.user && <p> added {blog.user.name}</p>}
 
-        {blog.user && blog.user.username === user.username && <button id="delete-btn" onClick={handleDelete}>remove</button>}
+        {blog.user && blog.user.username === user.username && <Button id="delete-btn" onClick={handleDelete}>remove</Button>}
         {blog.comments.length > 0 && <Comments comments={blog.comments}/>}
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   )
 }
 

@@ -1,8 +1,14 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import {
+  Button,
+  Card,
+  TextField,
+  CardContent,
+  Typography
+} from '@mui/material'
 import { setNotification } from '../reducers/notificationReducer'
 import { login } from '../reducers/loginReducer'
-
 
 const LoginForm = () => {
   const [username, setUsername] = useState('')
@@ -26,30 +32,36 @@ const LoginForm = () => {
   }
 
   return (
-    <div>
-      <h2>login to application</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          username
-          <input
-            type="text"
-            value={username}
-            name="Username"
-            onChange={({ target }) => setUsername(target.value)}
-          />
-        </div>
-        <div>
-          password
-          <input
-            type="password"
-            value={password}
-            name="Password"
-            onChange={({ target }) => setPassword(target.value)}
-          />
-        </div>
-        <button id="login-btn" type="submit">login</button>
-      </form>
-    </div>
+    <Card>
+      <CardContent>
+        <Typography component="h5" variant="h5">
+          Login to application
+        </Typography>
+        <form onSubmit={handleLogin}>
+          <div>
+            <TextField
+              variant="filled"
+              fullWidth
+              value={username}
+              label="Username"
+              onChange={({ target }) => setUsername(target.value)}
+            />
+          </div>
+          <div>
+            <TextField
+              variant="filled"
+              fullWidth
+              type="password"
+              value={password}
+              label="Password"
+              name="Password"
+              onChange={({ target }) => setPassword(target.value)}
+            />
+          </div>
+          <Button id="login-btn" variant="contained" color="primary" type="submit">login</Button>
+        </form>
+      </CardContent>
+    </Card>
   )
 }
 

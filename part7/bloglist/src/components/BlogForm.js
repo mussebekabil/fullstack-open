@@ -1,5 +1,12 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import {
+  Button,
+  Card,
+  TextField,
+  Typography,
+  CardContent
+} from '@mui/material'
 import { setNotification } from '../reducers/notificationReducer'
 import { createBlog } from '../reducers/blogReducer'
 const initialBlog = {
@@ -29,42 +36,46 @@ const BlogForm = () => {
   }
 
   return (
-    <div>
-      <h2>create new</h2>
-      <form onSubmit={addBlog}>
-        <div>
-          title :
-          <input
-            type="text"
-            value={blog.title}
-            aria-label="Title"
-            id="title"
-            onChange={({ target }) => setBlog({ ...blog, title: target.value })}
-          />
-        </div>
-        <div>
-          author :
-          <input
-            type="text"
-            value={blog.author}
-            aria-label="Author"
-            id="author"
-            onChange={({ target }) => setBlog({ ...blog, author: target.value })}
-          />
-        </div>
-        <div>
-          url :
-          <input
-            type="text"
-            value={blog.url}
-            aria-label="Url"
-            id="url"
-            onChange={({ target }) => setBlog({ ...blog, url: target.value })}
-          />
-        </div>
-        <button id="create" type="submit">create</button>
-      </form>
-    </div>
+    <Card>
+      <CardContent>
+        <Typography component="h5" variant="h5">
+          Create new
+        </Typography>
+        <form onSubmit={addBlog}>
+          <div>
+            <TextField
+              variant="filled"
+              fullWidth
+              value={blog.title}
+              label="Title"
+              id="title"
+              onChange={({ target }) => setBlog({ ...blog, title: target.value })}
+            />
+          </div>
+          <div>
+            <TextField
+              variant="filled"
+              fullWidth
+              value={blog.author}
+              label="Author"
+              id="author"
+              onChange={({ target }) => setBlog({ ...blog, author: target.value })}
+            />
+          </div>
+          <div>
+            <TextField
+              variant="filled"
+              fullWidth
+              value={blog.url}
+              label="Url"
+              id="url"
+              onChange={({ target }) => setBlog({ ...blog, url: target.value })}
+            />
+          </div>
+          <Button id="create" variant="contained" color="primary" type="submit">create</Button>
+        </form>
+      </CardContent>
+    </Card>
   )}
 
 export default BlogForm
